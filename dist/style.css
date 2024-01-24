@@ -76,9 +76,11 @@ h6 {
 
 .container {
   min-height: 100vh;
-  display: grid;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  gap: 5rem;
 }
 .container .search-section {
   width: 100%;
@@ -86,7 +88,6 @@ h6 {
 .container .search-section h1 {
   text-align: center;
   font-size: 2.5rem;
-  margin-bottom: 1rem;
 }
 .container .search-section form {
   display: flex;
@@ -114,6 +115,7 @@ h6 {
   margin-left: 0.5rem;
 }
 .container .search-results {
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -145,6 +147,28 @@ h6 {
 }
 .container .search-results .search-result img:hover {
   opacity: 0.8;
+}
+.container .show-more-btn {
+  display: none;
+  padding: 0.7rem 2rem;
+  background-color: #008cba;
+  color: #fff;
+  border: none;
+  font-size: inherit;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 0.5rem;
+}
+@media only screen and (max-width: 48em) {
+  .container .search-results .search-result {
+    width: 45%;
+  }
+}
+@media only screen and (max-width: 30em) {
+  .container .search-results .search-result {
+    width: 100%;
+  }
 }
 
 body {
