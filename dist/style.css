@@ -65,4 +65,90 @@ h6 {
 #root,
 #__next {
   isolation: isolate;
+}
+
+:root {
+  --ff--primary: "Chivo", sans-serif;
+  --fs--regular: 18px;
+  --fw--bold: 400;
+  --fw--very-bold: 700;
+}
+
+.container {
+  min-height: 100vh;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+.container .search-section {
+  width: 100%;
+}
+.container .search-section h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.container .search-section form {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.container .search-section form .search-input {
+  width: 60%;
+  max-width: 400px;
+  padding: 0.7rem 1.4rem;
+  border: none;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  font-size: inherit;
+  color: #333;
+}
+.container .search-section form .btn-search {
+  padding: 0.7rem 2rem;
+  background-color: #138065;
+  color: #fff;
+  border: none;
+  font-size: inherit;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 0.5rem;
+}
+.container .search-results {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+}
+.container .search-results .search-result {
+  margin-bottom: 2rem;
+  width: 30%;
+  height: 100%;
+  border-radius: 5px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+.container .search-results .search-result a {
+  font-size: 20px;
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 10px;
+  text-transform: capitalize;
+  text-align: center;
+}
+.container .search-results .search-result img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: opacity 0.2s ease-in-out;
+}
+.container .search-results .search-result img:hover {
+  opacity: 0.8;
+}
+
+body {
+  height: 100%;
+  font-family: var(--ff--primary);
+  font-size: var(--fs--regular);
 }/*# sourceMappingURL=style.css.map */
