@@ -8,20 +8,24 @@ const showMore = document.querySelector("#show-more-btn");
 let inputData = "";
 let page = 1;
 
-async function searchImages() {
-  inputData = forminputEl.value;
-  const url = `https://api.unsplash.com/search/photos?page=${page}&query=${inputData}&client_id=${accessKey}`;
-
-  const response = await fetch(url);
-  const data = await response.json();
-
-  const results = data.results;
-
-  if (page === 1) {
-    searchResults.innerHTML = "";
+/* Query Unplash */
+async function queryApi() {
+  try {
+    inputData = forminputEl.value;
+    const config = {
+      params: { p: page, query: inputData, client_id: accessKey },
+    };
+    const url = `https://api.unsplash.com/search/photos`;
+    const response = await axios.get(url, config);
+    return response.data.results;
+  } catch (error) {
+    console.log(error);
   }
+}
 
-  results.map((result) => {
+/* Generate images base on the unplash query result */
+const generateImages = function (data) {
+  data.map((result) => {
     const imageWrapper = document.createElement("div");
     imageWrapper.classList.add("search-result");
     const image = document.createElement("img");
@@ -36,19 +40,25 @@ async function searchImages() {
     imageWrapper.appendChild(imageLink);
     searchResults.appendChild(imageWrapper);
   });
+};
 
+const searchImages = async function () {
+  const results = await queryApi();
+  generateImages(results);
   page++;
-  if (page > 1) {
-    showMore.style.display = "block";
-  }
-}
+};
 
 formEl.addEventListener("submit", (e) => {
   e.preventDefault();
-  page = 1;
-  searchImages();
+  let page = 1;
+  if (page === 1) {
+    searchResults.innerHTML = "";
+    searchImages();
+    showMore.style.display = "block";
+  }
 });
 
 showMore.addEventListener("click", (e) => {
+  e.preventDefault();
   searchImages();
 });
